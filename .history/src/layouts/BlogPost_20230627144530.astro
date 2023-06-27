@@ -1,0 +1,166 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import FormattedDate from '../components/FormattedDate.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+
+const { title, description, pubDate, updatedDate, heroImage, authorBio, authorName, profilePicture, postSlug } = Astro.props as Props;
+// Dummy comments data
+const comments = [
+  {
+    id: "how-to-plan-effective-events/",
+    author: 'Commenter 1',
+    text: 'This is a great post, thanks for sharing!',
+    replies: [
+      {
+        author: 'Author',
+        text: 'Thanks for your feedback!',
+      },
+    ],
+  },
+  {
+    id: "using-mdx",
+    author: 'Commenter 2',
+    text: 'I found this post very useful.',
+  },
+];
+const postComments = comments.filter(comment => comment.id == postSlug)
+---
+<style>
+    body {
+     font-family: 'Roboto', sans-serif;
+     color: #4a4a4a;
+     line-height: 1.6;
+     background-color: #f4f4f4;
+     margin: 0;
+     padding: 0;
+ }
+ .container {
+     max-width: 960px;
+     margin: 0 auto;
+     padding: 1em;
+ }
+ 
+ article {
+     background-color: white;
+     border-radius: 4px;
+     padding: 2em;
+     margin-bottom: 2em;
+     box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+ }
+ 
+ img {
+     max-width: 100%;
+     height: auto;
+     display: block;
+     margin: 1em 0;
+ }
+ 
+ h1 {
+     font-size: 2.5em;
+     color: #333;
+     margin-bottom: 0.5em;
+ }
+ 
+ h2 {
+     font-size: 2em;
+     color: #333;
+ }
+ 
+ .author-info {
+     display: flex;
+     align-items: center;
+     margin-bottom: 2em;
+ }
+ 
+ .author-info img {
+     width: 80px;
+     height: 80px;
+     border-radius: 50%;
+     object-fit: cover;
+     margin-right: 1em;
+ }
+ 
+ .comment {
+     background-color: #f8f8f8;
+     border-radius: 4px;
+     padding: 1em;
+     margin-bottom: 1em;
+ }
+ 
+ .reply {
+     margin-left: 2em;
+ }
+ 
+ a {
+     color: #0077cc;
+     text-decoration: none;
+ }
+ 
+ a:hover {
+     text-decoration: underline;
+ }
+ p{
+    margin:20px
+ }
+ 
+ </style>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body class="bg-gray-100 text-gray-900 antialiased">
+    <Header />
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <article>
+        {heroImage && <img class="w-full h-72 object-cover object-center mb-8" src={heroImage} alt="" />}
+        <h1 class="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-gray-900">{title}</h1>
+        <div class="flex mt-4 mb-8">
+          <FormattedDate class="text-gray-500 text-sm md:text-base" date={pubDate} />
+          {
+            updatedDate && (
+              <span class="text-gray-500 text-sm md:text-base ml-4">
+                Last updated on <FormattedDate date={updatedDate} />
+              </span>
+            )
+          }
+        </div>
+        <div class="flex items-center my-8">
+          <img class="mr-4 w-16 h-16 rounded-full" src={profilePicture} alt={authorName} />
+          <div>
+            <a href="#" rel="author" class="text-xl font-bold text-gray-900">{authorName}</a>
+            <p class="text-base font-light text-gray-500">{authorBio}</p>
+          </div>
+        </div>
+        <hr class="mb-8 border-t border-gray-200" />
+        <div class="prose max-w-none text-gray-800">
+          <slot />
+        </div>
+        <div class="my-8">
+          <h2 class="text-2xl font-bold mb-4">Comments</h2>
+          {
+            postComments && postComments.map(comment => (
+              <div class="mb-4 border border-gray-300 p-4 rounded">
+                <h3 class="text-lg font-bold mb-2">{comment.author}</h3>
+                <p>{comment.text}</p>
+                {comment.replies &&
+                  comment.replies.map(reply => (
+                    <div class="mt-4 ml-8 border-l-2 border-gray-300 pl-4">
+                      <h4 class="text-lg font-bold mb-2">{reply.author}</h4>
+                      <p>{reply.text}</p>
+                    </div>
+                  ))}
+              </div>
+            ))
+          }
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

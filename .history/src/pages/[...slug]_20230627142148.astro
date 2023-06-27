@@ -1,0 +1,99 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import BlogPost from '../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post: any) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+post.data.postSlug = Astro.params.slug;
+const { Content } = await post.render();
+---
+
+<style>
+   body {
+    font-family: 'Roboto', sans-serif;
+    color: #4a4a4a;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+article {
+    background-color: white;
+    border-radius: 4px;
+    padding: 2em;
+    margin-bottom: 2em;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em 0;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 2em;
+    color: #333;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.author-info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1em;
+}
+
+.comment {
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.reply {
+    margin-left: 2em;
+}
+
+a {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+</style>
+<BlogPost {...post.data}>
+	<h1>{post.data.title}</h1>
+	<Content />
+</BlogPost>
