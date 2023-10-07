@@ -57,7 +57,20 @@ const Footer = () => {
               </div>
             </div>
             <div className="text-secondary">
-           
+              <div className="flex items-center mb-4">
+                <a href="/">
+                  {/* <FaFacebook className="text-2xl text-primary mr-4" /> */}
+                </a>
+                <a href="/">
+                  {/* <FaInstagram className="text-2xl text-primary mr-4" /> */}
+                </a>
+                <a href="/">
+                  {/* <FaLinkedin className="text-2xl text-primary mr-4" /> */}
+                </a>
+                {/* <a href="https://twitter.com/easeplan_team">
+                  <FaTwitter className="text-2xl text-primary" /> */}
+                </a>
+              </div>
               <p className="text-secondary">easeplan.team@gmail.com</p>
               <p className="mt-4">+234 XXXXXXXX</p>
             </div>
