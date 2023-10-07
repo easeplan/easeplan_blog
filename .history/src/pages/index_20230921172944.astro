@@ -1,0 +1,90 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import '../styles/global.css'
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			ul {
+				list-style-type: none;
+				padding: unset;
+			}
+			ul li {
+				display: flex;
+			}
+			ul li :global(time) {
+				flex: 0 0 130px;
+				font-style: italic;
+				color: #595959;
+			}
+			ul li a:visited {
+				color: #8e32dc;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- component -->
+			<!-- ====== Blog Section Start -->
+			<section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 px-0 lg:px-1 w-full overflow-x-hidden"> {/* Adjusted the padding and added overflow-x-hidden */}
+				<div class="container mx-auto max-w-screen-md overflow-hidden"> {/* Added overflow-hidden */}
+					<div class="flex flex-wrap">
+						{posts.map((post) => (
+							<div class="w-full sm:w-1/2 mb-2"> {/* Removed px-0 */}
+								<div class="card mx-auto max-w-[350px] border border-gray-300 rounded-lg flex overflow-hidden"> {/* Added overflow-hidden */}
+									<div class="overflow-hidden flex-1">
+										<img
+											src={post.data.heroImage}
+											alt="image"
+											class="object-cover w-full h-full"
+										/>
+									</div>
+									<div class="p-3 flex-1 items-center">
+										<h3>
+											<a
+												href={`/${post.slug}/`}
+												class="text-dark hover:text-primary mb-2 inline-block text-xs font-semibold sm:text-xs lg:text-xs xl:text-xs"
+											>
+												{post.data.title}
+											</a>
+										</h3>
+										<p class="text-body-color text-[10px]">
+											{}
+										</p>
+
+										<span class="bg-primary mb-2 inline-block rounded-full py-1 text-center text-xs font-thin text-sm leading-loose text-slate-600">
+											<FormattedDate date={post.data.pubDate} />
+										</span>
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+			
+			
+			
+			
+			
+			
+			
+			<!-- ====== Blog Section End -->
+
+		</main>
+		<Footer />
+	</body>
+</html>

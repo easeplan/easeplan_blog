@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+header {
+  background-color: #174E64;
+  display: flex;
+  alignItems: center;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  zIndex: 10;
+}
