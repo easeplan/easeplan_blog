@@ -1,10 +1,11 @@
 import React from "react";
 import "../styles/global.css";
 import Logo from "./Logo";
-import { FaFacebook } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa6";
-import { IoLogoLinkedin } from "react-icons/io5";
-import { FaXTwitter } from "react-icons/fa6";
+// import { FaFacebook } from "react-icons/fa6";
+// import { FaInstagram } from "react-icons/fa6";
+// import { IoLogoLinkedin } from "react-icons/io5";
+// import { FaXTwitter } from "react-icons/fa6";
+// import { FaXTwitter } from "@react-icons/all-files/fa/FaXTwitter";
 
 const Footer = () => {
   return (
@@ -47,12 +48,12 @@ const Footer = () => {
               </div>
               <div className="flex flex-col space-y-4 text-white">
                 <div className="">
-                  <div className="flex gap-4 mb-3">
+                  {/* <div className="flex gap-4 mb-3">
                     <FaFacebook className="text-[#71f79f] text-3xl" />
                     <FaInstagram className="text-[#71f79f] text-3xl" />
                     <IoLogoLinkedin className="text-[#71f79f] text-3xl" />
                     <FaXTwitter className="text-[#71f79f] text-3xl" />
-                  </div>
+                  </div> */}
                   <p className="text-secondary">easeplan.team@gmail.com</p>
                 </div>
               </div>
