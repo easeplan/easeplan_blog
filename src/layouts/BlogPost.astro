@@ -4,6 +4,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FormattedDate from '../components/FormattedDate.astro';
+import Navbar from '../components/Navbar';
 
 type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage, authorBio, authorName, profilePicture, postSlug } =
@@ -23,7 +24,8 @@ try {
   </head>
 
   <body class="bg-gray-100 text-gray-900 antialiased">
-    <Header />
+    <!-- <Header /> -->
+    <Navbar /
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <article>
         {heroImage && <img class="w-full h-72 object-cover object-center mb-8" src={heroImage} alt="" />}

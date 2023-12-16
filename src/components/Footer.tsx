@@ -1,69 +1,65 @@
 import React from "react";
-import '../styles/global.css'
+import "../styles/global.css";
 import Logo from "./Logo";
+import { FaFacebook } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
+import { IoLogoLinkedin } from "react-icons/io5";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
     <section className="footer py-12">
-      <div className="container mx-auto">
-        <div className="subscribe py-6 px-4 md:px-6 w-full">
-          <h2 className="text-primary text-center text-xs md:text-5xl font-bold" style={{color:"#174e64"}}>
-            Subscribe to our emails to see what we’re up to
-          </h2>
-          <div className="mt-6 flex space-x-5 md:flex-row justify-center items-center">
-            <input
-              type="email"
-              placeholder="Enter email address"
-              className="px-2 w-40 py-2 border border-gray-300 text-[7px] focus:outline-none focus:border-primary md:mr-4 md:mb-0"
-            />
-            <button
-              className="text-gray-500 bg-gray-200 px-6 py-2 text-[7px] hover:bg-opacity-90 transition duration-300"
-              style={{backgroundColor:"#174e64",color:"#71f79f", textTransform:"uppercase"}}
-            >
-              Subscribe
-            </button>
+      <div className="lg:px-20 px-10 w-full">
+        <div className="flex lg:flex-row md:flex-col flex-col justify-between">
+          <div className="w-full ">
+            <Logo />
+            <p className="text-white my-6">
+              Make event planning easy with Easeplan. Find & hire the best
+              vendors, event service providers, connect with top event planners
+              in Nigeria. Decorators, Photographers, Bakers, Caterers, Ushering,
+              Event planners, Make-up artists, DJs, MCs, Hair stylist, in
+              Nigeria
+            </p>
           </div>
-        </div>
-        <div className="mt-12">
-          <div className="flex md:grid-cols-5 gap-8">
-            <div className="text-secondary">
-              <Logo />
-            </div>
-            <div className="text-secondary">
-              <p className="font-semibold text-lg">Company</p>
-              <div className="mt-2">
-                <a href="/">About us</a>
-                <a href="/">Contact Support</a>
-                <a href="/">Terms and Conditions</a>
-                <a href="/">Privacy Policy</a>
+          <div className="flex justify-center w-full md:mt-20">
+            <div className="flex lg:flex-row md:flex-row flex-col justify-center w-full gap-20">
+              <div className="">
+                <p className="font-semibold text-md text-[#71f79f] ">
+                  Community
+                </p>
+                <div className="flex flex-col space-y-4 mt-6 text-white">
+                  <a href="/">Events</a>
+                  <a href="/">Blogs</a>
+                  <a href="/">Forum</a>
+                  <a href="/">Become vendor</a>
+                </div>
               </div>
-            </div>
-            <div className="text-secondary">
-              <p className="font-semibold text-lg">Community</p>
-              <div className="mt-2">
-                <a href="/">Events</a>
-                <a href="/">Blogs</a>
-                <a href="/">Forum</a>
-                <a href="/">Become vendor</a>
+              <div className="text-secondary">
+                <p className="font-semibold text-lg text-[#71f79f]">
+                  Top Services
+                </p>
+                <div className="flex flex-col space-y-4 mt-6 text-white">
+                  <a href="/">Events Planners</a>
+                  <a href="/">Photographers</a>
+                  <a href="/">Djs</a>
+                  <a href="/">Caterers</a>
+                </div>
               </div>
-            </div>
-            <div className="text-secondary">
-              <p className="font-semibold text-lg">Top Services</p>
-              <div className="mt-2">
-                <a href="/">Events Planners</a>
-                <a href="/">Photographers</a>
-                <a href="/">Djs</a>
-                <a href="/">Caterers</a>
+              <div className="flex flex-col space-y-4 text-white">
+                <div className="">
+                  <div className="flex gap-4 mb-3">
+                    <FaFacebook className="text-[#71f79f] text-3xl" />
+                    <FaInstagram className="text-[#71f79f] text-3xl" />
+                    <IoLogoLinkedin className="text-[#71f79f] text-3xl" />
+                    <FaXTwitter className="text-[#71f79f] text-3xl" />
+                  </div>
+                  <p className="text-secondary">easeplan.team@gmail.com</p>
+                </div>
               </div>
-            </div>
-            <div className="text-secondary">
-           
-              <p className="text-secondary">easeplan.team@gmail.com</p>
-              <p className="mt-4">+234 XXXXXXXX</p>
             </div>
           </div>
         </div>
-        <div className="text-center text-white mt-6">
+        <div className="text-center text-white mt-20">
           &copy; {new Date().getFullYear()} EasePlan & Co. All rights reserved
         </div>
       </div>
@@ -231,7 +227,6 @@ const Footer = () => {
 // //   border: `transparent`,
 // // }));
 
-
 // // const Footer = () => {
 // //   return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
 // // };
@@ -255,7 +250,6 @@ const Footer = () => {
 //     display: none;
 //   }
 
- 
 // .mobile-nav {
 
 //   .display-mobile-nav {
