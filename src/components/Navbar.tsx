@@ -4,12 +4,13 @@ import { Dialog, Popover } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import Logo from "./Logo";
+import Link from "next/link";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="">
+    <header className="bg-[#174e64]">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global">
@@ -29,18 +30,17 @@ export default function Navbar() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <a href="/" className="text-md leading-6 text-white">
+          <Link href="/" className="text-md leading-6 text-white">
             Home
-          </a>
-          <a href="/properties" className="text-md leading-6 text-white">
-            Events Planners
-          </a>
-          <a href="/about" className="text-md leading-6 text-white">
-            Service Providers
-          </a>
-          <a href="/contact" className="text-md leading-6 text-white">
-            Contact
-          </a>
+          </Link>
+          <Link href="/" className="text-md leading-6 text-white">
+            Blog
+          </Link>
+          <Link
+            href="/https://app.easeplan.io/findvendors"
+            className="text-md leading-6 text-white">
+            Find Vendors
+          </Link>
         </Popover.Group>
       </nav>
       <Dialog
@@ -49,37 +49,34 @@ export default function Navbar() {
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-[--primary-foreground] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-[#174e64] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <h1 className="font-bold text-[--secondary] lg:text-2xl text-lg">
-                MyProperty
-              </h1>
+              <Logo />
             </a>
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 rounded-md p-2.5 text-white"
               onClick={() => setMobileMenuOpen(false)}>
               <span className="sr-only">Close menu</span>
-              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+              <XMarkIcon className="h-8 w-8" aria-hidden="true" />
             </button>
           </div>
-          <div className="mt-6 flow-root">
+          <div className="mt-10 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
-                <a href="/" className="text-md leading-6 text-white">
+              <div className="space-y-10 py-6 flex flex-col">
+                <Link href="/" className="text-md leading-6 text-white">
                   Home
-                </a>
-                <a href="/properties" className="text-md leading-6 text-white">
-                  Events Planners
-                </a>
-                <a href="/about" className="text-md leading-6 text-white">
-                  Service Providers
-                </a>
-                <a href="/contact" className="text-md leading-6 text-white">
-                  Contact
-                </a>
+                </Link>
+                <Link href="/" className="text-md leading-6 text-white">
+                  Blog
+                </Link>
+                <Link
+                  href="/https://app.easeplan.io/findvendors"
+                  className="text-md leading-6 text-white">
+                  Find Vendors
+                </Link>
               </div>
             </div>
           </div>

@@ -1,11 +1,12 @@
+import Image from "next/image";
 import React from "react";
-import '../styles/global.css'
+import LogoImg from "/public/easeplanlogo.png";
 
 const Logo = () => {
   return (
     <div className="flex items-center">
-      <img
-        src="/images/easeplanlogo.png"
+      <Image
+        src={LogoImg}
         alt="easeplan logo"
         className="lg:h-10 lg:w-20 h-7 w-10 mr-2"
       />

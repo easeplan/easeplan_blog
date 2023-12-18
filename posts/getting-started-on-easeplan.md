@@ -1,11 +1,12 @@
 ---
 title: 'Getting Started on Easeplan for Event'
 description: "The life of an event professional can be incredibly rewarding, but it's also filled with challenges. Juggling multiple tasks, coordinating with various stakeholders, and keeping track of every detail is no easy feat. Locating the clients in need of your services can be challenging, also considering that people tend to give important jobs like this to event professionals they’ve seen in their past jobs and have built a professional event service reputation."
-pubDate: 'Jul 02 2022'
+pubDate: Jul 02 2022
 heroImage: '/Artboard 1 (1).png'
-authorName: 'Ekekenta Clinton'
+author: 'Ekekenta Clinton'
+# readTimeInMinutes: '6 min'
 authorBio: 'Founder and CEO, Easeplan'
-profilePicture: 'https://avatars.githubusercontent.com/u/60361247?v=4'
+profilePicture: https://avatars.githubusercontent.com/u/60361247?v=4
 ---
 
 
@@ -13,7 +14,7 @@ The life of an event professional can be incredibly rewarding, but it's also fil
 
 In this tutorial, we’ll walk you through the essential features and functionalities of Easeplan, helping you get started with the platform. We will cover everything from account creation to managing event details, tracking budgets, collaborating with team members, and promoting your events. So, without further ado, let's dive in!
 
-# What is Easeplan?
+## What is Easeplan?
 
 Easeplan is a marketplace and event management platform designed specifically for event professionals, helping them simplify their workflow, streamline communication, and enhance their event planning experience. It serves as a hub for event professionals such as Event planners,  Dj’s, Caterers, Event Decorators, Cake Designers, Make-up artists, Wedding gown vendors, event space and hall owners, etc to showcase their services, connect with potential clients, and grow their businesses. Easeplan provides a comprehensive suite of tools that allow users to plan, manage, and execute successful events while also fostering collaboration between event professionals and clients through a location-based matching system.
 
@@ -21,7 +22,7 @@ The platform is tailored to cater to the unique needs and challenges faced by ev
 
 Key features of Easeplan include:
 
-* **Vendor directory: **Event professionals can create detailed profiles showcasing their skills, experience, and portfolios to attract potential clients.
+* **Vendor directory:** Event professionals can create detailed profiles showcasing their skills, experience, and portfolios to attract potential clients.
 * **Service matching:** Clients input their event requirements, budget, and location, and Easeplan match them with the best vendors and service providers for their event requirements and budget through our location-based matching system.
 * **Communication tools:**  Easeplan offers seamless communication between clients and event professionals, facilitating collaboration with event planners and vendors through our integrated messaging system, streamlining the event management process.
 * **Payment processing:  **Easeplan allows clients to** **securely pay vendors directly through our platform, ensuring a hassle-free and safe transaction experience.
@@ -128,9 +129,3 @@ Setting up a Profile
 ## Conclusion
 
 We hope this comprehensive guide has provided you with valuable insights into how to get started on Easeplan to connect with clients and streamline your event planning process. By leveraging the platform's features, you can save time, reduce stress, and create unforgettable experiences for your attendees. As you continue to explore Easeplan, we encourage you to take advantage of its tools and resources to elevate your event planning career. Happy planning!
-
-import HeaderLink from '../../components/HeaderLink.astro';
-
-<HeaderLink href="#" onclick="alert('clicked!')">
-	Our Social links
-</HeaderLink>
