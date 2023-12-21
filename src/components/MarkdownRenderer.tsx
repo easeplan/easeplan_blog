@@ -6,6 +6,9 @@ import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
 import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
 import json from "react-syntax-highlighter/dist/cjs/languages/prism/json";
 import bash from "react-syntax-highlighter/dist/cjs/languages/prism/bash";
+import React from "react";
+import { slugify } from "@/lib/utils";
+import rehypeRaw from "rehype-raw";
 
 SyntaxHighlighter.registerLanguage("tsx", tsx);
 SyntaxHighlighter.registerLanguage("typescript", typescript);
@@ -17,11 +20,53 @@ type MarkdownRendererProps = {
 };
 
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
+  const headingRenderer = (level: number) => {
+    // eslint-disable-next-line react/display-name
+    return ({ children, ...props }: any) => {
+      const text = React.Children.toArray(children).join("");
+      const id = slugify(text);
+
+      let className = "";
+      switch (level) {
+        case 1:
+          className = "font-bold lg:text-3xl text-2xl my-8";
+          break;
+        case 2:
+          className = "font-bold lg:text-2xl text-xl my-8";
+          break;
+        case 3:
+          className = "font-bold lg:text-xl text-lg my-8";
+          break;
+        case 4:
+          className = "font-bold lg:text-lg text-md my-8";
+          break;
+        case 5:
+          className = "font-bold lg:text-md text-md my-8";
+          break;
+        case 6:
+          className = "font-bold text-sm my-8";
+          break;
+      }
+
+      return React.createElement(
+        `h${level}`,
+        { id, className, ...props },
+        children
+      );
+    };
+  };
   return (
     <article className="prose max-w-none leading-normal prose-headings:font-medium">
       <ReactMarkdown
+        rehypePlugins={[rehypeRaw]}
         className="mb-8"
         components={{
+          h1: headingRenderer(1),
+          h2: headingRenderer(2),
+          h3: headingRenderer(3),
+          h4: headingRenderer(4),
+          h5: headingRenderer(5),
+          h6: headingRenderer(6),
           img: ({ node: _node, src, alt, ...props }: any) => {
             if (typeof src === "string") {
               return (
@@ -38,6 +83,51 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               return null;
             }
           },
+
+          ul: ({ node, ...props }) => (
+            <ul
+              className="list-disc pl-5"
+              style={{
+                marginLeft: "10px",
+                lineHeight: "1.75",
+                fontFamily:
+                  "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                fontSize: "1.1rem",
+                color: "#213343",
+              }}
+              {...props}
+            />
+          ),
+
+          ol: ({ node, ...props }) => (
+            <ol
+              className="list-decimal pl-5"
+              style={{
+                marginLeft: "10px",
+                fontFamily:
+                  "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                lineHeight: "1.78",
+                fontSize: "1.1rem",
+                color: "#213343",
+              }}
+              {...props}
+            />
+          ),
+
+          li: ({ node, ...props }) => (
+            <li
+              className="mb-2 text-base leading-relaxed"
+              style={{
+                marginLeft: "10px",
+                lineHeight: "1.78",
+                fontFamily:
+                  "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                fontSize: "1.1rem",
+                color: "#213343",
+              }}
+              {...props}
+            />
+          ),
           p: ({ node, ...props }: any) => {
             const str = props.children[0]?.toString() ?? "";
             // if tweet use tweet embed
@@ -71,27 +161,23 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               }
             }
 
-            return <p {...props} />;
+            return (
+              <p
+                className="mb-6"
+                style={{
+                  fontFamily:
+                    "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  lineHeight: "1.78",
+                  fontSize: "1.1rem",
+
+                  color: "#213343",
+                }}
+                {...props}
+              />
+            );
           },
-          h1: ({ node, ...props }: any) => (
-            <h1 className="font-bold lg:text-3xl text-2xl my-8" {...props} />
-          ),
-          h2: ({ node, ...props }: any) => (
-            <h2 className="font-bold lg:text-2xl text-xl my-8" {...props} />
-          ),
-          h3: ({ node, ...props }: any) => (
-            <h3 className="font-bold lg:text-xl text-lg my-8" {...props} />
-          ),
-          h4: ({ node, ...props }: any) => (
-            <h4 className="font-bold lg:text-lg text-md my-8" {...props} />
-          ),
-          h5: ({ node, ...props }: any) => (
-            <h5 className="font-bold lg:text-md text-md my-8" {...props} />
-          ),
-          h6: ({ node, ...props }: any) => (
-            <h6 className="font-bold text-sm my-8" {...props} />
-          ),
-        }}>
+        }}
+      >
         {content}
       </ReactMarkdown>
     </article>

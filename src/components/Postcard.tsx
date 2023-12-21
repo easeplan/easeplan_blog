@@ -38,7 +38,7 @@ const PostCard = (post: Post) => {
           </div>
           <h3>
             <a
-              href={`/posts/${post.slug}/`}
+              href={`/blog/${post.slug}/`}
               className="text-dark hover:text-primary mb-2 inline-block text-md font-bold">
               {post.title}
             </a>
@@ -59,7 +59,7 @@ const PostCard = (post: Post) => {
                 {post.author}
               </span>
               <p className="text-body-color text-xs">
-                CEO and Software Engineer
+                {post.authorBio}
               </p>
             </div>
           </div>

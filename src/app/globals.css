@@ -1,3 +1,4 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap'); */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -72,5 +73,306 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+p, li {
+  font-weight: 300;
+}
+h1, h2, h3, h4, h5, h6 {
+  scroll-margin-top: 10px;
+}
+
+.custom-promo-class-1 {
+  background-color: #174e64; /* Adjust the color to match the banner's background */
+  border-radius: 4px; /* Smaller radius for a flatter look */
+  padding: 16px; /* Adjust padding to control the space inside the banner */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space out the logo and button */
+  color: white; /* Text color */
+  margin-bottom: 10px;
+  height: 70px;
+}
+
+.custom-promo-class-1 img {
+  /* Assuming this is a logo or icon on the banner */
+  width: auto;
+  margin-right: 16px; /* Space after the logo */
+}
+
+.custom-promo-class-1 h2 {
+  position: relative;
+  line-height: 1rem;
+  font-size: 18px; /* Adjust the font size to match the design */
+  margin: 0; /* No margin for heading */
+}
+
+.custom-promo-class-1-content {
+  display: flex;
+  width: 60%;
+  align-items: center;
+  justify-content: center;
+}
+.custom-promo-class-1 a {
+  background-color: #fff; /* Color for the button, assuming a yellow button */
+  color:#174e64;
+  padding: 10px 20px; /* Padding inside the button */
+  text-decoration: none; /* Remove underline from the link */
+  border-radius: 20px; /* Rounded corners for the button */
+  font-weight: bold; /* Bold font for the button text */
+  font-size: 16px; /* Font size for the button */
+  display: inline-block; /* Inline-block for proper padding and margin */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: shadow for the button */
+}
+
+/* Hide the image and show the button text only if the image is not provided */
+.custom-promo-class-1 img[src=""] {
+  display: none;
+}
+
+.custom-promo-class-1 a:empty {
+  display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .custom-promo-class-1 {
+    flex-direction: column; 
+    height: 130px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  .custom-promo-class-1-content{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+  }
+  .custom-promo-class-1 img {
+     display: none;
+  }
+  .custom-promo-class-1 h2 {
+    text-align: center;
+    line-height: 1.2rem;
+    margin-bottom: 10px;
+  }
+  /* .custom-promo-class-2 {
+    flex-direction: column;
+  }
+  .custom-promo-class-2-content {
+    width: 100%;
+    position: relative;
+  } */
+
+}
+.custom-promo-class-2 {
+  background-color: #174e64; /* Deep purple background or any promo color */
+  color: white;
+  padding: 1rem; /* Adjust padding for mobile */
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column; /* Stack elements on mobile */
+  border-radius: 10px;
+  overflow: hidden; /* Prevents content from spilling out */
+}
+
+.custom-promo-class-2-content {
+  width: 100%; /* Take full width on mobile */
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column; /* Stack elements on mobile */
+  margin-top: 1rem; /* Add some space between image and content */
+}
+
+.custom-promo-class-2 h2 {
+  margin: 0.5rem 0; /* Reduce margins on mobile */
+  font-size: 1.1rem; /* Adjust font size for smaller screens */
+  font-weight: lighter;
+}
+
+.custom-promo-class-2 a {
+  background-color: #71F79F; /* Bright yellow for the button */
+  color: #174e64;
+  padding: 0.5rem 1rem; /* Adjust padding for mobile */
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  font-weight: bold;
+  margin-top: 0.5rem; /* Add some space above the button */
+}
+
+.custom-promo-class-2 img {
+  max-width: 100%; /* Make image responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px;
+}
+
+/* Media query for tablets and larger devices */
+@media (min-width: 768px) {
+  .custom-promo-class-2 {
+    flex-direction: row; /* Align items horizontally on larger screens */
+    padding: 1.5rem; /* Increase padding */
+  }
+
+  .custom-promo-class-2-content {
+    width: 60%; /* Adjust width */
+    flex-direction: row; /* Align items horizontally */
+    justify-content: space-between; /* Space out the content */
+    margin-left: 1rem;
+  }
+
+  .custom-promo-class-2 h2 {
+    margin: 0 1rem; /* Increase side margins */
+    font-size: 1.1rem; /* Larger font size */
+  }
+
+  .custom-promo-class-2 a {
+    padding: 0.75rem 1.5rem; /* Increase button padding */
+  }
+
+  .custom-promo-class-2 img {
+    width: auto; /* Adjust width to be auto, so it takes the necessary space */
+    max-width: 300px; /* Limit the max width */
+  }
+}
+
+.promo-side-img-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff; /* Light background */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.promo-side-img-card img {
+  width: 50%; /* Half the card's width */
+  height: auto;
+  border-radius: 8px 0 0 8px; /* Rounded corners on the left side */
+}
+
+.promo-side-img-card .content {
+  padding: 20px;
+  text-align: left;
+  width: 50%;
+}
+
+.promo-side-img-card h2, .promo-side-img-card p, .promo-side-img-card a {
+  margin-left: 20px; /* Spacing from the image */
+}
+
+.promo-side-img-card a {
+  background-color: #ff4081; /* Example button color */
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 20px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.promo-container {
+  background-color: #174e64;
+  color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Slight scale on hover for the whole container */
+.promo-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.promo-logo {
+  max-width: 120px;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate the logo on hover */
+.promo-container:hover .promo-logo {
+  transform: rotate(-10deg);
+}
+
+.promo-heading {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.promo-cta {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid white;
+  color: #fff;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Animated underline effect on hover */
+.promo-cta:before {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  border-radius: 2px;
+}
+
+.promo-cta:hover:before {
+  width: 100%;
+  background: #174e64;
+}
+
+/* Change button background color on hover */
+.promo-cta:hover, .promo-cta:focus {
+  background-color: #71F79F;
+  color: #174e64;
+  text-shadow: none;
+}
+
+
+@media (max-width: 768px) {
+  .promo-container {
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+  }
+
+  .promo-heading {
+    font-size: 1.5rem;
+  }
+
+  .promo-subheading {
+    font-size: 1.25rem;
+  }
+
+  .promo-cta {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
   }
 }

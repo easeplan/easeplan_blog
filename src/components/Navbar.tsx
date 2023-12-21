@@ -13,18 +13,23 @@ export default function Navbar() {
     <header className="bg-[#174e64]">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
-        aria-label="Global">
+        aria-label="Global"
+      >
         <div className="flex lg:flex-1">
+          {/* Hide this logo when mobile menu is open */}
+          {/* {!mobileMenuOpen && ( */}
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <Logo />
           </a>
+          {/* )} */}
         </div>
         <div className="flex lg:hidden">
           <button
             type="button"
             className="-m-2.5 inline-flex text-white items-center justify-center rounded-md p-2.5 "
-            onClick={() => setMobileMenuOpen(true)}>
+            onClick={() => setMobileMenuOpen(true)}
+          >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
@@ -33,13 +38,17 @@ export default function Navbar() {
           <Link href="/" className="text-md leading-6 text-white">
             Home
           </Link>
-          <Link href="/" className="text-md leading-6 text-white">
-            Blog
+          <Link
+            href="https://app.easeplan.io/signup?redirect_url=account%20onboard"
+            className="text-md leading-6 text-white"
+          >
+            Become a vendor
           </Link>
           <Link
-            href="/https://app.easeplan.io/findvendors"
-            className="text-md leading-6 text-white">
-            Find Vendors
+            href="https://app.easeplan.io/findvendors"
+            className="text-md leading-6 text-white"
+          >
+            Find vendors
           </Link>
         </Popover.Group>
       </nav>
@@ -47,7 +56,8 @@ export default function Navbar() {
         as="div"
         className="lg:hidden"
         open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}>
+        onClose={setMobileMenuOpen}
+      >
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-[#174e64] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
@@ -58,7 +68,8 @@ export default function Navbar() {
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-white"
-              onClick={() => setMobileMenuOpen(false)}>
+              onClick={() => setMobileMenuOpen(false)}
+            >
               <span className="sr-only">Close menu</span>
               <XMarkIcon className="h-8 w-8" aria-hidden="true" />
             </button>
@@ -69,13 +80,17 @@ export default function Navbar() {
                 <Link href="/" className="text-md leading-6 text-white">
                   Home
                 </Link>
-                <Link href="/" className="text-md leading-6 text-white">
-                  Blog
+                <Link
+                  href="https://app.easeplan.io/signup?redirect_url=account%20onboard"
+                  className="text-md leading-6 text-white"
+                >
+                  Become a vendor
                 </Link>
                 <Link
                   href="/https://app.easeplan.io/findvendors"
-                  className="text-md leading-6 text-white">
-                  Find Vendors
+                  className="text-md leading-6 text-white"
+                >
+                  Find vendors
                 </Link>
               </div>
             </div>

@@ -14,6 +14,11 @@ const nextConfig = { reactStrictMode: true, swcMinify: true, images: {
         hostname: 'capitalrollup-core-api-prod.onrender.com',
         pathname: '**',
       },
+      {
+        protocol:'https',
+        hostname:'hackmd.io',
+        pathname:'**'
+      }
     ],
   }, }
 

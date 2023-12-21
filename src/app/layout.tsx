@@ -18,10 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <link
+        href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@250;400&display=swap"
+        rel="stylesheet"
+      />
+
       <body className={inter.className}>
         <Navbar />
         {children}
-        <Footer />
       </body>
     </html>
   );
