@@ -51,27 +51,31 @@ const promotions = [
 ];
 
 const getPostContent = (slug: string) => {
-  const folder = "posts/";
-  const file = `${folder}${slug}.md`;
-  const content = fs.readFileSync(file, "utf8");
-  const matterResult = matter(content);
-  return {
-    content: matterResult.content,
-    postMeta: {
-      slug: file.replace(".md", ""),
-      title: matterResult.data.title,
-      description: matterResult.data.description,
-      pubDate: matterResult.data.pubDate,
-      heroImage: matterResult.data.heroImage,
-      author: matterResult.data.author,
-      authorBio: matterResult.data.authorBio,
-      profilePicture: matterResult.data.profilePicture,
-    },
-  };
+  try {
+    const folder = "posts/";
+    const file = `${folder}${slug}.md`;
+    const content = fs.readFileSync(file, "utf8");
+    const matterResult = matter(content);
+    return {
+      content: matterResult.content,
+      postMeta: {
+        slug: file.replace(".md", ""),
+        title: matterResult.data.title,
+        description: matterResult.data.description,
+        pubDate: matterResult.data.pubDate,
+        heroImage: matterResult.data.heroImage,
+        author: matterResult.data.author,
+        authorBio: matterResult.data.authorBio,
+        profilePicture: matterResult.data.profilePicture,
+      },
+    };
+  } catch (e) {
+    console.log(e);
+  }
 };
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = getPostContent(params.slug);
-  const toc = useMarkdownToc(post.content as string);
+  const toc = useMarkdownToc(post?.content as string);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
   // const markdownWithPromotions = insertPromotions(post.body.raw, promotions);
   const markdownWithPromotions = insertPromotions(post.content, promotions);
