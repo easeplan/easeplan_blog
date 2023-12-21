@@ -7,7 +7,7 @@ import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typesc
 import json from "react-syntax-highlighter/dist/cjs/languages/prism/json";
 import bash from "react-syntax-highlighter/dist/cjs/languages/prism/bash";
 import React from "react";
-import { slugify } from "@/lib/utils";
+import { slugify } from "lib/utils";
 import rehypeRaw from "rehype-raw";
 
 SyntaxHighlighter.registerLanguage("tsx", tsx);
@@ -21,7 +21,6 @@ type MarkdownRendererProps = {
 
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   const headingRenderer = (level: number) => {
-  
     // eslint-disable-next-line react/display-name
     return ({ children, ...props }: any) => {
       const text = React.Children.toArray(children).join("");

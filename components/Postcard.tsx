@@ -1,6 +1,6 @@
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
-import { convertToISO } from "@/lib/utils";
+import { convertToISO } from "lib/utils";
 
 const PostCard = (post: any) => {
   function truncateDescription(description: string, wordLimit: number) {

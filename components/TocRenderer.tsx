@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { unified } from "unified";
 import markdown from "remark-parse";
 import { visit } from "unist-util-visit";
-import { slugify } from "@/lib/utils";
+import { slugify } from "lib/utils";
 
 // Define the type for the TOC item
 type TocItem = {

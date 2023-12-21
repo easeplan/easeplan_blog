@@ -1,6 +1,6 @@
-import HeroSection from "@/components/HeroSection";
+import HeroSection from "components/HeroSection";
 import { compareDesc } from "date-fns";
-import PostCard from "@/components/Postcard";
+import PostCard from "components/Postcard";
 import fs from "fs";
 import matter from "gray-matter";
 

@@ -1,13 +1,13 @@
 // app/posts/[slug]/page.tsx
 import { format, parseISO } from "date-fns";
-import MarkdownRenderer from "@/components/MarkdownRenderer";
+import MarkdownRenderer from "components/MarkdownRenderer";
 import Image from "next/image";
-import useMarkdownToc from "@/components/TocRenderer";
-import { insertPromotions } from "@/components/insertPromotion";
-import { calculateReadTime } from "@/lib/utils";
+import useMarkdownToc from "components/TocRenderer";
+import { insertPromotions } from "components/insertPromotion";
+import { calculateReadTime } from "lib/utils";
 import fs from "fs";
 import matter from "gray-matter";
-import { convertToISO } from "@/lib/utils";
+import { convertToISO } from "lib/utils";
 
 const promotions = [
   {
@@ -102,12 +102,15 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
               style={{ lineHeight: "1.78", fontSize: "1.125rem" }}
             >
               <h2 className="font-semibold">{post?.postMeta?.author}</h2>
-              <p className="text-sm">{post?.postMeta?.authorBio}</p> 
+              <p className="text-sm">{post?.postMeta?.authorBio}</p>
               <div className="absolute top-2 left-2">
-              <p className="text-xs mt-2 rounded text-white">
-                {format(parseISO(convertToISO(post?.postMeta?.pubDate)), "LLLL d, yyyy")} ·{" "}
-                {calculateReadTime(post?.content, 200)} min read 
-              </p>
+                <p className="text-xs mt-2 rounded text-white">
+                  {format(
+                    parseISO(convertToISO(post?.postMeta?.pubDate)),
+                    "LLLL d, yyyy"
+                  )}{" "}
+                  · {calculateReadTime(post?.content, 200)} min read
+                </p>
               </div>
             </div>
           </div>
