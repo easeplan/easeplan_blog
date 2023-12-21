@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "install": "npm install --legacy-peer-deps",
     "dev": "next dev",
     "contentlayer": "contentlayer dev",
     "build": "next build",
@@ -17,7 +18,7 @@
     "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
     "lucide-react": "^0.298.0",
-    "next": "^13.5.6",
+    "next": "14.0.4",
     "next-contentlayer": "^0.3.4",
     "react": "^18",
     "react-dom": "^18",

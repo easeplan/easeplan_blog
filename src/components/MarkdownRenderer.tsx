@@ -21,6 +21,7 @@ type MarkdownRendererProps = {
 
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   const headingRenderer = (level: number) => {
+  
     // eslint-disable-next-line react/display-name
     return ({ children, ...props }: any) => {
       const text = React.Children.toArray(children).join("");
