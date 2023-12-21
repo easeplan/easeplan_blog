@@ -1,21 +1,13 @@
 // app/posts/[slug]/page.tsx
 import { format, parseISO } from "date-fns";
-import { allPosts } from "contentlayer/generated";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import Image from "next/image";
 import useMarkdownToc from "@/components/TocRenderer";
 import { insertPromotions } from "@/components/insertPromotion";
 import { calculateReadTime } from "@/lib/utils";
-
-export const generateStaticParams = async () =>
-  allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
-
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  console.log(params);
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
-  if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
-  return { title: post.title };
-};
+import fs from "fs";
+import matter from "gray-matter";
+import { convertToISO } from "@/lib/utils";
 
 const promotions = [
   {
@@ -58,12 +50,31 @@ const promotions = [
   // ... additional promotions
 ];
 
+const getPostContent = (slug: string) => {
+  const folder = "posts/";
+  const file = `${folder}${slug}.md`;
+  const content = fs.readFileSync(file, "utf8");
+  const matterResult = matter(content);
+  return {
+    content: matterResult.content,
+    postMeta: {
+      slug: file.replace(".md", ""),
+      title: matterResult.data.title,
+      description: matterResult.data.description,
+      pubDate: matterResult.data.pubDate,
+      heroImage: matterResult.data.heroImage,
+      author: matterResult.data.author,
+      authorBio: matterResult.data.authorBio,
+      profilePicture: matterResult.data.profilePicture,
+    },
+  };
+};
 const PostLayout = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
-  const toc = useMarkdownToc(post?.body.raw as string);
+  const post = getPostContent(params.slug);
+  const toc = useMarkdownToc(post.content as string);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
   // const markdownWithPromotions = insertPromotions(post.body.raw, promotions);
-  const markdownWithPromotions = insertPromotions(post.body.raw, promotions);
+  const markdownWithPromotions = insertPromotions(post.content, promotions);
 
   return (
     <div
@@ -76,13 +87,13 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
       <div className="xl:p-8 lg:p-8">
         <div className="text-white bg-[#174e64] p-4 xs:p-4 sm:p-4 md:p-4 xl:p-8 lg:p-8 xl:rounded-lg lg:rounded-lg relative text-white">
           <h1 className="font-bold text-3xl xl:text-3xl lg:text-3xl mb-4 xl:mt-8 lg:mt-8 leading-tight">
-            {post.title}
+            {post.postMeta.title}
           </h1>
           <div className="flex items-center mt-6">
-            <img
+            <Image
               className="rounded-full border-2 border-white shadow-lg"
-              src={post.profilePicture}
-              alt={post?.author}
+              src={post?.postMeta?.profilePicture}
+              alt={post?.postMeta?.author}
               width={50}
               height={50}
             />
@@ -90,14 +101,14 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
               className="ml-4"
               style={{ lineHeight: "1.78", fontSize: "1.125rem" }}
             >
-              <h2 className="font-semibold">{post.author}</h2>
-              <p className="text-sm">{post.authorBio}</p>
-              {/* <div className="absolute top-2 left-2"> */}
+              <h2 className="font-semibold">{post?.postMeta?.author}</h2>
+              <p className="text-sm">{post?.postMeta?.authorBio}</p> 
+              <div className="absolute top-2 left-2">
               <p className="text-xs mt-2 rounded text-white">
-                {format(parseISO(post.pubDate), "LLLL d, yyyy")} ·{" "}
-                {calculateReadTime(post.body.raw, 200)} min read
+                {format(parseISO(convertToISO(post?.postMeta?.pubDate)), "LLLL d, yyyy")} ·{" "}
+                {calculateReadTime(post?.content, 200)} min read 
               </p>
-              {/* </div> */}
+              </div>
             </div>
           </div>
         </div>
@@ -115,7 +126,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
                   {toc.map((item) => (
                     <li
                       key={item.id}
-                      className={`p-2 text-black-100 hover:bg-gray-100 hover:border-l-2 hover:border-[#174e64] pl-${
+                      className={`p-1 text-black-100 hover:bg-gray-100 hover:border-l-2 hover:border-[#174e64] pl-${
                         item.level * 5
                       }`}
                       // style={{
@@ -154,13 +165,13 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
                     color: "#213343",
                   }}
                 >
-                  {post.description}
+                  {post.postMeta.description}
                 </p>
-                {post.heroImage && (
+                {post.postMeta.heroImage && (
                   <Image
                     className="mx-auto rounded-md"
-                    src={post.heroImage}
-                    alt={post.title}
+                    src={post.postMeta.heroImage}
+                    alt={post.postMeta.title}
                     width={920}
                     height={640}
                   />

@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
+import { format, parse } from "date-fns";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -25,6 +26,13 @@ export function calculateReadTime(
   return Math.ceil(readTime);
 }
 
+export const convertToISO = (dateString: string) => {
+  // Parse the date from the given format ('MMM dd yyyy')
+  const parsedDate = parse(dateString, "MMM dd yyyy", new Date());
+
+  // Format the date to ISO format ('yyyy-MM-dd')
+  return format(parsedDate, "yyyy-MM-dd");
+};
 // // Example usage:
 // const sampleText: string = `
 // The quick brown fox jumps over the lazy dog. This sentence contains every single letter of the alphabet,

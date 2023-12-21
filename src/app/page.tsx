@@ -1,10 +1,33 @@
 import HeroSection from "@/components/HeroSection";
-import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import PostCard from "@/components/Postcard";
+import fs from "fs";
+import matter from "gray-matter";
+
+const getPostMetadata = () => {
+  const folder = "posts/";
+  const files = fs.readdirSync(folder);
+  const markDownPosts = files.filter((file) => file.endsWith(".md"));
+  const posts = markDownPosts.map((fileName) => {
+    const fileContents = fs.readFileSync(`posts/${fileName}`, "utf8");
+    const matterResult = matter(fileContents);
+    return {
+      slug: fileName.replace(".md", ""),
+      title: matterResult.data.title,
+      description: matterResult.data.description,
+      pubDate: matterResult.data.pubDate,
+      heroImage: matterResult.data.heroImage,
+      author: matterResult.data.author,
+      authorBio: matterResult.data.authorBio,
+      profilePicture: matterResult.data.profilePicture,
+    };
+  });
+  return posts;
+};
 
 export default function Home() {
-  const posts = allPosts.sort((a, b) =>
+  const postMetadata = getPostMetadata();
+  const posts = postMetadata.sort((a, b) =>
     compareDesc(new Date(a.pubDate), new Date(b.pubDate))
   );
   return (

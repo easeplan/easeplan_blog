@@ -30,19 +30,19 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
       let className = "";
       switch (level) {
         case 1:
-          className = "font-bold lg:text-3xl text-2xl my-8";
+          className = "font-bold lg:text-3xl text-2xl my-5";
           break;
         case 2:
-          className = "font-bold lg:text-2xl text-xl my-8";
+          className = "font-bold lg:text-2xl text-xl my-5";
           break;
         case 3:
-          className = "font-bold lg:text-xl text-lg my-8";
+          className = "font-bold lg:text-xl text-lg my-5";
           break;
         case 4:
-          className = "font-bold lg:text-lg text-md my-8";
+          className = "font-bold lg:text-lg text-md my-5";
           break;
         case 5:
-          className = "font-bold lg:text-md text-md my-8";
+          className = "font-bold lg:text-md text-md my-5";
           break;
         case 6:
           className = "font-bold text-sm my-8";
@@ -107,7 +107,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                 marginLeft: "10px",
                 fontFamily:
                   "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                lineHeight: "1.78",
+                lineHeight: "1.70",
                 fontSize: "1.1rem",
                 color: "#213343",
               }}
@@ -120,7 +120,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               className="mb-2 text-base leading-relaxed"
               style={{
                 marginLeft: "10px",
-                lineHeight: "1.78",
+                lineHeight: "1.70",
                 fontFamily:
                   "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
                 fontSize: "1.1rem",
@@ -168,7 +168,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                 style={{
                   fontFamily:
                     "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                  lineHeight: "1.78",
+                  lineHeight: "1.70",
                   fontSize: "1.1rem",
 
                   color: "#213343",
