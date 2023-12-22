@@ -55,6 +55,7 @@ const PostLayout = ({ content, frontmatter, slug }: any) => {
   const markdownWithPromotions = insertPromotions(content, promotions);
 
   return (
+    
     <div
       className="flex text-black justify-center"
       style={{
@@ -81,14 +82,14 @@ const PostLayout = ({ content, frontmatter, slug }: any) => {
             >
               <h2 className="font-semibold">{frontmatter.author}</h2>
               <p className="text-sm">{frontmatter.authorBio}</p>
-              <div className="absolute top-2 left-2">
-                <p className="text-xs mt-2 rounded text-white">
+              <div className="">
+                <span className="text-xs mt-2 rounded text-white">
                   {format(
                     parseISO(convertToISO(frontmatter.pubDate)),
                     "LLLL d, yyyy"
                   )}{" "}
                   · {calculateReadTime(content, 200)} min read
-                </p>
+                </span>
               </div>
             </div>
           </div>

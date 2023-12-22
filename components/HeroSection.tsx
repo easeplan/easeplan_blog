@@ -2,15 +2,16 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="bg-[#174e64] pb-[4rem] pt-[3rem] px-4 flex flex-col items-center justify-center xs:mb-5">
+    <section className="bg-[#174e64] pb-[4rem] pt-[3rem] flex flex-col items-center justify-center xs:mb-5">
       <div className="container mx-auto max-w-full flex flex-col items-center text-center">
-        <h2 className="text-white text-[40px] font-bold mb-4 animate__animated animate__fadeIn">
+        <h2 className="text-white text-[30px] font-bold mb-4 animate__animated animate__fadeIn">
           Easeplan Blog
         </h2>
         <p className="text-gray-100 mb-6 animate__animated animate__fadeIn animate__delay-1s text-md lg:w-[40%] w-[100%]">
-          Find the latest industry news, interviews, and resources to grow your event business
+          Find the latest industry news, interviews, and resources to grow your
+          event business
         </p>
-        <div className="w-[50%] xs:w-[90%] relative bg-slate-600 animate__animated animate__fadeIn animate__delay-2s text-xs">
+        <div className="lg:w-[50%] sm:w-[100%] w-[100%] relative bg-slate-600 animate__animated animate__fadeIn animate__delay-2s text-xs">
           <input
             type="text"
             placeholder="Search for blogs..."
