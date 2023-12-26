@@ -6,12 +6,14 @@ const Logo = () => {
   return (
     <div className="flex items-center">
       <Image
+        width={50}
+        height={30}
         src={LogoImg}
         alt="easeplan logo"
-        className="lg:h-7 lg:w-20 h-5 w-10 mr-2"
+        style={{ fontWeight: "100" }}
       />
       <div className="text-left">
-        <p className="font-bold lg:text-2xl text-lg text-[#71f79f] nowrap">
+        <p className="font-bold lg:text-[1.5rem] text-lg text-[#71f79f] nowrap">
           easeplan <span className="lg:text-lg text-md font-thin"></span>
         </p>
       </div>

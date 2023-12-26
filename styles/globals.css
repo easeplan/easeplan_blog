@@ -318,7 +318,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .promo-heading {
-  font-size: 2rem;
+  font-size: 1.2rem;
   margin: 0.5rem 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -333,6 +333,7 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 12px;
 }
 
 /* Animated underline effect on hover */
@@ -378,4 +379,113 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
   }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 2px;
+  text-decoration: none;
+  color: #174e64;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.pagination a.active {
+  background-color: #71F79F; 
+  color: #fff; 
+}
+
+.pagination a:hover {
+  background-color: #71F79F;
+}
+
+/* Style for the comment section container */
+.comment-section {
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Style for the comment section title */
+.comment-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Style for the comment list container */
+.comment-list {
+  margin-top: 20px;
+}
+
+/* Style for individual comments */
+.comment {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Style for the textarea input */
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+  resize: none;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Style for the input fields in the form */
+.comment-form [type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Style for the checkbox labels */
+input[type="checkbox"] + span {
+  font-size: 14px;
+  color: #666;
+  margin-left: 5px;
+}
+
+/* Style for the "Add Comment" button */
+button {
+  background-color: #71F79F;
+  color: #174e64;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #71F79F;
 }

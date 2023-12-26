@@ -5,9 +5,13 @@ import Image from "next/image";
 import useMarkdownToc from "@/components/TocRenderer";
 import { insertPromotions } from "@/components/insertPromotion";
 import { calculateReadTime, convertToISO } from "@/lib/utils";
-import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
+import fs from "fs";
+import Link from "next/link";
+import RelatedPostCard from "@/components/RelatedPostCard";
+import { Comment } from "@/components/Comment";
+import { useState } from "react";
 
 const promotions = [
   {
@@ -50,12 +54,75 @@ const promotions = [
   // ... additional promotions
 ];
 
-const PostLayout = ({ content, frontmatter, slug }: any) => {
+const getRelatedPosts = (currentAuthor: string, allPosts: any) => {
+  return allPosts.filter((post: any) => post.data.author === currentAuthor);
+};
+
+const PostLayout = ({
+  content,
+  frontmatter,
+  slug,
+  data: allPosts,
+  comments,
+}: any) => {
   const toc = useMarkdownToc(content as string);
   const markdownWithPromotions = insertPromotions(content, promotions);
+  const relatedPosts = getRelatedPosts(frontmatter.author, allPosts);
+
+  const [commentLocal, setComments] = useState<any[]>(comments);
+  const [newComment, setNewComment] = useState("");
+  const [notifyMe, setNotifyMe] = useState<any>("");
+  const [saveEmail, setSaveEmail] = useState<any>("");
+  const [name, setName] = useState(
+    typeof window !== "undefined" ? localStorage.getItem("name") || "" : ""
+  );
+
+  const [email, setEmail] = useState(
+    typeof window !== "undefined" ? localStorage.getItem("email") || "" : ""
+  );
+
+  const handleAddComment = async () => {
+    if (newComment.trim() !== "") {
+      // Check if notifyMe is true and make a request to /newsletter
+      if (notifyMe) {
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/newsletter`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+          }),
+        });
+      }
+
+      // Save name and email to local storage if saveEmail is true
+      if (saveEmail) {
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+      }
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/comments`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            author: { name, email },
+            text: newComment,
+            postId: frontmatter.slug,
+          }),
+        }
+      ).then((res) => res.json());
+
+      setComments([...commentLocal, response]);
+      setNewComment("");
+    }
+  };
 
   return (
-    
     <div
       className="flex text-black justify-center"
       style={{
@@ -180,6 +247,82 @@ const PostLayout = ({ content, frontmatter, slug }: any) => {
             Get started for free
           </a>
         </div>
+
+        {relatedPosts?.length > 0 && (
+          <section className="blog pb-4 lg:pt-0 lg:pb-5 px-4 w-full overflow-x-hidden">
+            <div className="overflow-hidden mt-10">
+              <h2 className="text-2xl font-bold mb-4">Related Posts:</h2>
+              <div className="flex flex-wrap">
+                {relatedPosts.map((post: any) => (
+                  <RelatedPostCard key={post.slug} {...post.data} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+        <div className="comment-section container mx-auto max-w-screen-lg">
+          <h2>
+            {commentLocal.length} Comments for {frontmatter.title}{" "}
+          </h2>
+          <div className="comment-list">
+            {commentLocal.map((comment: any) => (
+              <Comment key={comment._id} {...comment} />
+            ))}
+          </div>
+          <div className="comment-form">
+            <textarea
+              name="new-comment"
+              id="new-comment"
+              cols={30}
+              rows={5}
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              placeholder="Add a comment..."
+            ></textarea>
+
+            {!name && (
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Name"
+                onChange={(e) => setName(e.target.value)}
+              />
+            )}
+            {!email && (
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email Address"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            )}
+            <div className="w-full sm:w-1/2 mb-10 sm:px-2 xs:mb-6">
+              <input
+                type="checkbox"
+                name="nofify"
+                id="notify"
+                checked={notifyMe}
+                onChange={(e) => setNotifyMe(e.target.checked)}
+              />
+              <span>Email me new posts</span>
+            </div>
+            <div className="w-full sm:w-1/2 mb-10 sm:px-2 xs:mb-6">
+              <input
+                type="checkbox"
+                name="save"
+                id="save"
+                checked={saveEmail}
+                onChange={(e) => setSaveEmail(e.target.checked)}
+              />
+              <span>
+                Save my name, and email in this browser for the next comment.
+              </span>
+            </div>
+          </div>
+          <button onClick={handleAddComment}>Add Comment</button>
+        </div>
       </div>
     </div>
   );
@@ -201,14 +344,36 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }: any) {
+  const postsDirectory = path.join(process.cwd(), "posts");
+  const postFiles = fs.readdirSync(postsDirectory);
+
+  const allPostsData = postFiles.map((fileName) => {
+    const filePath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    const { data } = matter(fileContents);
+    const slug = fileName.replace(/\.md$/, "");
+    data.slug = slug;
+    return {
+      data,
+    };
+  });
+
   const markedownWithMeta = fs.readFileSync(
     path.join("posts", slug + ".md"),
     "utf8"
   );
   const { data: frontmatter, content } = matter(markedownWithMeta);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/comments/${slug}`,
+    {
+      method: "GET",
+    }
+  ).then((res) => res.json());
 
   return {
     props: {
+      comments: response,
+      data: allPostsData,
       frontmatter,
       slug,
       content,
