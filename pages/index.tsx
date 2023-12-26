@@ -6,16 +6,21 @@ import matter from "gray-matter";
 import path from "path";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export default function Home({ posts, currentPage, numPages }: any) {
   const router = useRouter();
 
-  const sortedPostes = posts.sort(
-    (
-      a: { pubDate: string | number | Date },
-      b: { pubDate: string | number | Date }
-    ) => compareDesc(new Date(a.pubDate), new Date(b.pubDate))
-  );
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState(posts);
+
+  useEffect(() => {
+    // Filter posts based on the search query whenever it changes
+    const filtered = posts.filter((post: any) =>
+      post.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredPosts(filtered);
+  }, [searchQuery, posts]);
 
   const handlePrev = (page: any) => {
     if (currentPage > 1) {
@@ -31,13 +36,18 @@ export default function Home({ posts, currentPage, numPages }: any) {
     }
   };
 
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
     <main>
-      <HeroSection />
+      <HeroSection handleSearch={handleSearch} searchQuery={searchQuery} />
       <section className="blog pb-4 lg:pt-0 lg:pb-5 px-0 lg:px-1 w-full overflow-x-hidden">
         <div className="container mx-auto max-w-screen-lg overflow-hidden mt-10">
           <div className="flex flex-wrap">
-            {sortedPostes.map((post: any, idx: any) => (
+            {/* Render filteredPosts instead of sortedPostes */}
+            {filteredPosts.map((post: any, idx: any) => (
               <PostCard key={idx} {...post} />
             ))}
           </div>

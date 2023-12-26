@@ -254,7 +254,7 @@ const PostLayout = ({
               <h2 className="text-2xl font-bold mb-4">Related Posts:</h2>
               <div className="flex flex-wrap">
                 {relatedPosts.map((post: any) => (
-                  <RelatedPostCard key={post.slug} {...post.data} />
+                  <RelatedPostCard key={post.data.slug} {...post.data} />
                 ))}
               </div>
             </div>
