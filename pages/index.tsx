@@ -7,6 +7,7 @@ import path from "path";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 
 export default function Home({ posts, currentPage, numPages }: any) {
   const router = useRouter();
@@ -41,38 +42,46 @@ export default function Home({ posts, currentPage, numPages }: any) {
   };
 
   return (
-    <main>
-      <HeroSection handleSearch={handleSearch} searchQuery={searchQuery} />
-      <section className="blog pb-4 lg:pt-0 lg:pb-5 px-0 lg:px-1 w-full overflow-x-hidden">
-        <div className="container mx-auto max-w-screen-lg overflow-hidden mt-10">
-          <div className="flex flex-wrap">
-            {/* Render filteredPosts instead of sortedPostes */}
-            {filteredPosts.map((post: any, idx: any) => (
-              <PostCard key={idx} {...post} />
-            ))}
+    <>
+      <Head>
+        <title>
+          Latest Industry News, Interviews, and Resources for Your Event
+          Business | Easeplan Blog
+        </title>
+      </Head>
+      <main>
+        <HeroSection handleSearch={handleSearch} searchQuery={searchQuery} />
+        <section className="blog pb-4 lg:pt-0 lg:pb-5 px-0 lg:px-1 w-full overflow-x-hidden">
+          <div className="container mx-auto max-w-screen-lg overflow-hidden mt-10">
+            <div className="flex flex-wrap">
+              {/* Render filteredPosts instead of sortedPostes */}
+              {filteredPosts.map((post: any, idx: any) => (
+                <PostCard key={idx} {...post} />
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="pagination">
-          {currentPage > 1 && (
-            <span style={{ marginRight: "5px" }} onClick={handlePrev}>
-              {`<< Prev`}
-            </span>
-          )}
-          {Array.from({ length: numPages }, (_, i) => (
-            <Link key={i} href={`/?page=${i + 1}`}>
-              <span className={currentPage === i + 1 ? "active" : ""}>
-                {i + 1}{" "}
+          <div className="pagination">
+            {currentPage > 1 && (
+              <span style={{ marginRight: "5px" }} onClick={handlePrev}>
+                {`<< Prev`}
               </span>
-            </Link>
-          ))}
-          {currentPage < numPages && (
-            <span style={{ marginLeft: "5px" }} onClick={handleNext}>
-              {`Next >>`}
-            </span>
-          )}
-        </div>
-      </section>
-    </main>
+            )}
+            {Array.from({ length: numPages }, (_, i) => (
+              <Link key={i} href={`/?page=${i + 1}`}>
+                <span className={currentPage === i + 1 ? "active" : ""}>
+                  {i + 1}{" "}
+                </span>
+              </Link>
+            ))}
+            {currentPage < numPages && (
+              <span style={{ marginLeft: "5px" }} onClick={handleNext}>
+                {`Next >>`}
+              </span>
+            )}
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
 
