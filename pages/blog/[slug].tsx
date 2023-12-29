@@ -137,13 +137,17 @@ const PostLayout = ({
           property="og:url"
           content={`https://blog.easeplan.io/blog/${slug}`}
         />
-        <meta property="og:image" content={frontmatter.heroImage} />
+        <meta property="og:image" content={`https://blog.easeplan.io/${frontmatter.heroImage}`} />
         <meta property="og:type" content="article" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={frontmatter.title} />
+        <meta
+          property="twitter:url"
+          content={`https://blog.easeplan.io/blog/${slug}`}
+        />
         <meta name="twitter:description" content={frontmatter.description} />
-        <meta name="twitter:image" content={frontmatter.heroImage} />
+        <meta name="twitter:image" content={`https://blog.easeplan.io/${frontmatter.heroImage}`}/>
         <meta
           name="keywords"
           content="event industry news, event business resources, event business interviews, Easeplan Blog"
