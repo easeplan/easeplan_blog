@@ -33,7 +33,7 @@ export default function Document() {
         />
         <meta
           property="og:image"
-          content="https://www.example.com/images/og-image.jpg"
+          content="https://res.cloudinary.com/dw8my5zef/image/upload/v1703842341/r0gqekuqsfjfbkqyv1o8.png"
         />
         <meta property="og:type" content="article" />
 
@@ -48,7 +48,7 @@ export default function Document() {
         />
         <meta
           name="twitter:image"
-          content="https://www.example.com/images/twitter-image.jpg"
+          content="https://res.cloudinary.com/dw8my5zef/image/upload/v1703842341/r0gqekuqsfjfbkqyv1o8.png"
         />
         <meta
           name="keywords"
