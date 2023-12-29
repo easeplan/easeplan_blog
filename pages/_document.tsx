@@ -5,6 +5,10 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <meta
+          name="google-site-verification"
+          content="lUaVCkoNpMHRTdWtbNnBrMl0585RRJlDTTKFhZ0Itfw"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@250;400&display=swap"
           rel="stylesheet"
@@ -49,10 +53,6 @@ export default function Document() {
         <meta
           name="keywords"
           content="event industry news, event business resources, event business interviews, Easeplan Blog"
-        />
-        <meta
-          name="google-site-verification"
-          content="your-verification-code"
         />
         <meta name="robots" content="index, follow" />
       </Head>
