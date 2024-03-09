@@ -29,22 +29,22 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
       let className = "";
       switch (level) {
         case 1:
-          className = "font-bold lg:text-3xl text-2xl my-3";
+          className = "font-bold lg:text-2xl text-2xl my-3";
           break;
         case 2:
-          className = "font-bold lg:text-2xl text-xl my-3";
+          className = "font-bold lg:text-xl text-xl my-3";
           break;
         case 3:
-          className = "font-bold lg:text-xl text-lg my-3";
+          className = "font-bold lg:text-lg text-lg my-3";
           break;
         case 4:
-          className = "font-bold lg:text-lg text-md my-3";
-          break;
-        case 5:
           className = "font-bold lg:text-md text-md my-3";
           break;
+        case 5:
+          className = "font-bold lg:text-sm text-md my-3";
+          break;
         case 6:
-          className = "font-bold text-sm my-5";
+          className = "font-bold text-xs my-5";
           break;
       }
 
@@ -168,7 +168,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                   fontFamily:
                     "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
                   lineHeight: "1.70",
-                  fontSize: "1.1rem",
+                  fontSize: "1.0rem",
 
                   color: "#213343",
                 }}

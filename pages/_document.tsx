@@ -17,6 +17,10 @@ export default function Document() {
         <meta name="next-head-count" content="24"></meta>
         <meta name="theme-color" content="#134153" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@250;400&display=swap"
+          rel="stylesheet"
+        />
         {/* google search console */}
         {CONFIG.googleSearchConsole.enable === true && (
           <>

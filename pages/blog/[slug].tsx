@@ -191,7 +191,7 @@ const PostLayout = ({
                     {toc.map((item) => (
                       <li
                         key={item.id}
-                        className={`text-black-100 hover:bg-gray-100 hover:border-l-2 hover:border-[#174e64] pl-${
+                        className={`hover:bg-gray-100 hover:border-l-2 hover:border-[#174e64] pl-${
                           item.level * 5
                         }`}
                         // style={{
