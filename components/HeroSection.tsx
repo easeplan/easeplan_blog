@@ -2,7 +2,12 @@ import React from "react";
 
 const HeroSection = ({ handleSearch, searchQuery }: any) => {
   return (
-    <section className="bg-[#174e64] pb-[4rem] pt-[3rem] flex flex-col items-center justify-center xs:mb-5">
+    <section
+      style={{
+        paddingTop: "64px",
+      }}
+      className="bg-[#174e64] pb-[4rem] pt-[3rem] flex flex-col items-center justify-center xs:mb-5"
+    >
       <div className="container mx-auto max-w-full flex flex-col items-center text-center">
         <h2 className="text-white text-[30px] font-bold mb-4 animate__animated animate__fadeIn">
           Easeplan Blog

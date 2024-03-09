@@ -4,7 +4,7 @@ description: "Imagine walking into a room where everyone knows
 your name, your story, and what sets you apart.
 That’s the magic of branding, positioning, and
 messaging."
-pubDate: Mar 09 2024
+pubDate: Mar 01 2024
 heroImage: '/images/how-to-structure-your-brand-to-attract-customers.png'
 author: 'Ekekenta Clinton'
 # readTimeInMinutes: '6 min'
