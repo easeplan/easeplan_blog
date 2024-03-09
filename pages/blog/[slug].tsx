@@ -13,6 +13,8 @@ import RelatedPostCard from "@/components/RelatedPostCard";
 import { Comment } from "@/components/Comment";
 import { useState } from "react";
 import Head from "next/head";
+import MetaConfig from "@/components/MetaConfig";
+import { CONFIG } from "../../site.config";
 
 const promotions = [
   {
@@ -40,7 +42,7 @@ const promotions = [
     link: "/",
     media: "image",
     description:
-      "Finding a vendors in verrified Nigeria is 10x easier with Easeplan",
+      "Finding a verrified vendors in Nigeria is 10x easier with Easeplan",
     cta: "Find vendors",
   },
   {
@@ -123,36 +125,20 @@ const PostLayout = ({
     }
   };
 
+  const meta = {
+    title: frontmatter.title,
+    pubDate: new Date(frontmatter.pubDate).toISOString(),
+    heroImage: frontmatter.heroImage,
+    description: frontmatter.description || "",
+    type: "",
+    url: `${CONFIG.link}/${slug}}`,
+    author: frontmatter.author,
+    profilePicture: frontmatter.profilePicture,
+  };
+
   return (
     <>
-      <Head>
-        {/* <link
-          rel="canonical"
-          href="https://www.example.com/blog/latest-industry-news"
-        /> */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta property="og:title" content={frontmatter.title} />
-        <meta property="og:description" content={frontmatter.description} />
-        <meta
-          property="og:url"
-          content={`https://blog.easeplan.io/blog/${slug}`}
-        />
-        <meta property="og:image" content={`https://blog.easeplan.io/${frontmatter.heroImage}`} />
-        <meta property="og:type" content="article" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={frontmatter.title} />
-        <meta
-          property="twitter:url"
-          content={`https://blog.easeplan.io/blog/${slug}`}
-        />
-        <meta name="twitter:description" content={frontmatter.description} />
-        <meta name="twitter:image" content={`https://blog.easeplan.io/${frontmatter.heroImage}`}/>
-        <meta
-          name="keywords"
-          content="event industry news, event business resources, event business interviews, Easeplan Blog"
-        />
-      </Head>
+      <MetaConfig {...meta} />
       <div
         className="flex text-black justify-center"
         style={{
@@ -205,7 +191,7 @@ const PostLayout = ({
                     {toc.map((item) => (
                       <li
                         key={item.id}
-                        className={`p-1 text-black-100 hover:bg-gray-100 hover:border-l-2 hover:border-[#174e64] pl-${
+                        className={`text-black-100 hover:bg-gray-100 hover:border-l-2 hover:border-[#174e64] pl-${
                           item.level * 5
                         }`}
                         // style={{
@@ -234,7 +220,7 @@ const PostLayout = ({
             <div className="flex-grow">
               <div className="container mx-auto max-w-[900px] px-8">
                 <div className="mt-6 flex flex-col space-y-4">
-                  <p
+                  {/* <p
                     style={{
                       fontFamily:
                         "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -245,7 +231,7 @@ const PostLayout = ({
                     }}
                   >
                     {frontmatter.description}
-                  </p>
+                  </p> */}
                   {frontmatter.heroImage && (
                     <Image
                       className="mx-auto rounded-md"
@@ -278,7 +264,7 @@ const PostLayout = ({
             </a>
           </div>
 
-          {relatedPosts?.length > 0 && (
+          {/* {relatedPosts?.length > 0 && (
             <section className="blog pb-4 lg:pt-0 lg:pb-5 px-4 w-full overflow-x-hidden">
               <div className="overflow-hidden mt-10">
                 <h2 className="text-2xl font-bold mb-4">Related Posts:</h2>
@@ -289,13 +275,13 @@ const PostLayout = ({
                 </div>
               </div>
             </section>
-          )}
+          )} */}
           <div className="comment-section container mx-auto max-w-screen-lg">
             <h2>
-              {commentLocal.length} Comments for {frontmatter.title}{" "}
+              {commentLocal?.length} Comments for {frontmatter.title}{" "}
             </h2>
             <div className="comment-list">
-              {commentLocal.map((comment: any) => (
+              {commentLocal?.map((comment: any) => (
                 <Comment key={comment._id} {...comment} />
               ))}
             </div>
@@ -394,16 +380,16 @@ export async function getStaticProps({ params: { slug } }: any) {
     "utf8"
   );
   const { data: frontmatter, content } = matter(markedownWithMeta);
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/comments/${slug}`,
-    {
-      method: "GET",
-    }
-  ).then((res) => res.json());
+  // const response = await fetch(
+  //   `${process.env.NEXT_PUBLIC_API_URL}/comments/${slug}`,
+  //   {
+  //     method: "GET",
+  //   }
+  // ).then((res) => res.json());
 
   return {
     props: {
-      comments: response,
+      // comments: response,
       data: allPostsData,
       frontmatter,
       slug,

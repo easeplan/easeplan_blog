@@ -7,7 +7,7 @@ function createPromoMarkdown(promo: any) {
     return `
   <div className="${promoClass}">
   <div className=${promoClass}-content>
-   ${mediaContent}
+  
   <h2>${promo.description}</h2>
   </div>
   <a href="${promo.link}">${promo.cta}</a>
@@ -35,7 +35,7 @@ export function insertPromotions(markdownContent: string, promotions: any) {
   const lines = markdownContent.split("\n");
 
   // Define where in the Markdown content you want to insert the promotions
-  const promotionPoints = [5, 30, 60, 80]; // Lines after which promotions should be inserted
+  const promotionPoints = [10, 30, 60, 80]; // Lines after which promotions should be inserted
 
   // Insert each promotion Markdown into the main content
   promotionPoints.forEach((point, index) => {

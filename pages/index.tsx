@@ -8,6 +8,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import MetaConfig from "@/components/MetaConfig";
+import { CONFIG } from "../site.config"
 
 export default function Home({ posts, currentPage, numPages }: any) {
   const router = useRouter();
@@ -40,6 +42,13 @@ export default function Home({ posts, currentPage, numPages }: any) {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
+
+  const meta = {
+    title: CONFIG.blog.title,
+    description: CONFIG.blog.description,
+    type: "website",
+    url: CONFIG.link,
+  }
 
   return (
     <>
@@ -91,6 +100,7 @@ export default function Home({ posts, currentPage, numPages }: any) {
         />
       </Head>
       <main>
+        <MetaConfig author={""} profilePicture={""} {...meta} />
         <HeroSection handleSearch={handleSearch} searchQuery={searchQuery} />
         <section className="blog pb-4 lg:pt-0 lg:pb-5 px-0 lg:px-1 w-full overflow-x-hidden">
           <div className="container mx-auto max-w-screen-lg overflow-hidden mt-10">

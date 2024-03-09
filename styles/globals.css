@@ -164,7 +164,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0px;
   }
   .custom-promo-class-1 img {
-     display: none;
+    width: 10;
   }
   .custom-promo-class-1 h2 {
     text-align: center;
@@ -297,15 +297,15 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   gap: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
   cursor: pointer;
 }
 
 /* Slight scale on hover for the whole container */
-.promo-container:hover {
+/* .promo-container:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
-}
+} */
 
 .promo-logo {
   max-width: 120px;

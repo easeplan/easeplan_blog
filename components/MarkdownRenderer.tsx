@@ -29,22 +29,22 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
       let className = "";
       switch (level) {
         case 1:
-          className = "font-bold lg:text-3xl text-2xl my-5";
+          className = "font-bold lg:text-3xl text-2xl my-3";
           break;
         case 2:
-          className = "font-bold lg:text-2xl text-xl my-5";
+          className = "font-bold lg:text-2xl text-xl my-3";
           break;
         case 3:
-          className = "font-bold lg:text-xl text-lg my-5";
+          className = "font-bold lg:text-xl text-lg my-3";
           break;
         case 4:
-          className = "font-bold lg:text-lg text-md my-5";
+          className = "font-bold lg:text-lg text-md my-3";
           break;
         case 5:
-          className = "font-bold lg:text-md text-md my-5";
+          className = "font-bold lg:text-md text-md my-3";
           break;
         case 6:
-          className = "font-bold text-sm my-8";
+          className = "font-bold text-sm my-5";
           break;
       }
 
