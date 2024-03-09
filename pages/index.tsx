@@ -9,7 +9,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import MetaConfig from "@/components/MetaConfig";
-import { CONFIG } from "../site.config"
+import { CONFIG } from "../site.config";
+import Navbar from "@/components/Navbar";
+import { Box } from "@mui/material";
 
 export default function Home({ posts, currentPage, numPages }: any) {
   const router = useRouter();
@@ -48,61 +50,16 @@ export default function Home({ posts, currentPage, numPages }: any) {
     description: CONFIG.blog.description,
     type: "website",
     url: CONFIG.link,
-  }
+  };
 
   return (
     <>
-      <Head>
-        <title>
-          Latest Industry News, Interviews, and Resources for Your Event
-          Business | Easeplan Blog
-        </title>
-        <meta
-          name="description"
-          content="Explore the latest industry news, insightful interviews, and valuable resources to help your event business thrive. Visit Easeplan Blog today for expert insights and updates."
-        />
-  
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          property="og:title"
-          content="Latest Industry News, Interviews, and Resources for Your Event Business | Easeplan Blog"
-        />
-        <meta
-          property="og:description"
-          content="Explore the latest industry news, insightful interviews, and valuable resources to help your event business thrive. Visit Easeplan Blog today for expert insights and updates."
-        />
-        <meta
-          property="og:url"
-          content="https://blog.easeplan.io"
-        />
-        <meta
-          property="og:image"
-          content="https://res.cloudinary.com/dw8my5zef/image/upload/v1703842341/r0gqekuqsfjfbkqyv1o8.png"
-        />
-        <meta property="og:type" content="article" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Latest Industry News, Interviews, and Resources for Your Event Business | Easeplan Blog"
-        />
-        <meta
-          name="twitter:description"
-          content="Explore the latest industry news, insightful interviews, and valuable resources to help your event business thrive. Visit Easeplan Blog today for expert insights and updates."
-        />
-        <meta
-          name="twitter:image"
-          content="https://res.cloudinary.com/dw8my5zef/image/upload/v1703842341/r0gqekuqsfjfbkqyv1o8.png"
-        />
-        <meta
-          name="keywords"
-          content="event industry news, event business resources, event business interviews, Easeplan Blog"
-        />
-      </Head>
+      <MetaConfig author={""} profilePicture={""} {...meta} />
       <main>
-        <MetaConfig author={""} profilePicture={""} {...meta} />
+        <Navbar />
         <HeroSection handleSearch={handleSearch} searchQuery={searchQuery} />
-        <section className="blog pb-4 lg:pt-0 lg:pb-5 px-0 lg:px-1 w-full overflow-x-hidden">
+
+        <section className="blog pb-4 lg:pt-0 lg:pb-5 px-0 lg:px-1 w-full overflow-x-hidden ">
           <div className="container mx-auto max-w-screen-lg overflow-hidden mt-10">
             <div className="flex flex-wrap">
               {/* Render filteredPosts instead of sortedPostes */}

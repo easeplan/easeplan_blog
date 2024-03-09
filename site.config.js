@@ -43,7 +43,7 @@ const CONFIG = {
   googleSearchConsole: {
     enable: true,
     config: {
-      siteVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "lUaVCkoNpMHRTdWtbNnBrMl0585RRJlDTTKFhZ0Itfw",
+      siteVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "DV2bhEWcppLDLSzeHYIbbdd7Miaus17cs0YTLuUEF8s",
     },
   },
   naverSearchAdvisor: {

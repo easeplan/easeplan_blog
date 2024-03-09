@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import { Html, Head, Main, NextScript } from "next/document";
 import { CONFIG } from "../site.config";
 
@@ -15,7 +14,6 @@ export default function Document() {
           href="/easeplanlogo.png"
         ></link>
         <meta name="next-head-count" content="24"></meta>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#134153" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -42,7 +40,6 @@ export default function Document() {
         )}
       </Head>
       <body>
-        <Navbar />
         <Main />
         <NextScript />
       </body>

@@ -15,6 +15,7 @@ import { useState } from "react";
 import Head from "next/head";
 import MetaConfig from "@/components/MetaConfig";
 import { CONFIG } from "../../site.config";
+import Navbar from "@/components/Navbar";
 
 const promotions = [
   {
@@ -139,15 +140,17 @@ const PostLayout = ({
   return (
     <>
       <MetaConfig {...meta} />
+      <Navbar />
       <div
         className="flex text-black justify-center"
         style={{
+          paddingTop: '64px',
           fontFamily:
             "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
         }}
       >
         <div className="xl:p-8 lg:p-8">
-          <div className="text-white bg-[#174e64] p-4 xs:p-4 sm:p-4 md:p-4 xl:p-8 lg:p-8 xl:rounded-lg lg:rounded-lg relative text-white">
+          {/* <div className="text-white bg-[#174e64] p-4 xs:p-4 sm:p-4 md:p-4 xl:p-8 lg:p-8 xl:rounded-lg lg:rounded-lg relative text-white">
             <h1 className="font-bold text-3xl xl:text-3xl lg:text-3xl mb-4 xl:mt-8 lg:mt-8 leading-tight">
               {frontmatter.title}
             </h1>
@@ -176,16 +179,16 @@ const PostLayout = ({
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="flex w-70">
             {/* Sidebar container for Table of Contents */}
             <div className="hidden lg:block">
-              <div className="sticky top-0 p-4">
+              <div className="sticky top-10 p-4">
                 <div className="p-4 rounded-lg">
                   <h2 className="font-bold text-xl mb-4">Table of contents</h2>
                   <ul
-                    className="space-y-2  border-l-2 border-gray-200"
+                    className="space-y-1  border-l-2 border-gray-200"
                     // style={{ borderLeft: "1px solid " }}
                   >
                     {toc.map((item) => (

@@ -30,6 +30,8 @@ const MetaConfig: React.FC<MetaConfigProps> = (props) => {
       <meta property="og:title" content={props.title} />
       <meta property="og:description" content={props.description} />
       <meta property="og:url" content={props.url} />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
       {CONFIG.lang && <meta property="og:locale" content={CONFIG.lang} />}
       {props.heroImage && <meta property="og:image" content={props.heroImage} />}
 
