@@ -1,7 +1,7 @@
 ---
 title: '10 Unique Entertainment Ideas for Corporate Events That Will Wow Your Guests'
 description: "Welcome to the world of corporate events transformed! Get ready to implement these 10 unique entertainment ideas that will not only amaze but keep your guests glued. From an illusionist with digital painting skills and VR to interactive shows and food stations customized to the theme, find out how you can make your event to be unforgettable. It perfectly matches needs of event planners of either new and very improvised ways of entertaining their corporate audiences from stagnation they seem to be in."
-pubDate: Feb 20 2024
+pubDate: Mar 09 2024
 heroImage: '/images/10-unique-ideas-that-will-wow-your-clients.png'
 author: 'Ekekenta Clinton'
 # readTimeInMinutes: '6 min'
