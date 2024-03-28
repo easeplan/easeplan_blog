@@ -92,7 +92,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                 lineHeight: "1.75",
                 fontFamily:
                   "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                fontSize: "1.1rem",
+                fontSize: "1.0rem",
                 color: "#213343",
               }}
               {...props}
@@ -107,7 +107,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                 fontFamily:
                   "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
                 lineHeight: "1.70",
-                fontSize: "1.1rem",
+                fontSize: "1.0rem",
                 color: "#213343",
               }}
               {...props}
@@ -122,7 +122,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                 lineHeight: "1.70",
                 fontFamily:
                   "'Lexend Deca', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                fontSize: "1.1rem",
+                fontSize: "1.0rem",
                 color: "#213343",
               }}
               {...props}
