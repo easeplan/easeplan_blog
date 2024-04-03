@@ -5,7 +5,7 @@ pubDate: Mar 13 2024
 heroImage: '/images/how-to-compare-and-select-the-best-photography-packages-for-birthdays.png'
 author: 'Ekekenta Clinton'
 # readTimeInMinutes: '6 min'
-authorBio: 'Co-Founder and CEO, Easeplan'
+authorBio: 'Co-Founder, Easeplan'
 profilePicture: https://avatars.githubusercontent.com/u/60361247?v=4
 ---
 

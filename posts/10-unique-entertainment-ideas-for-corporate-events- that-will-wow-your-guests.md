@@ -5,7 +5,7 @@ pubDate: Mar 09 2024
 heroImage: '/images/10-unique-ideas-that-will-wow-your-clients.png'
 author: 'Ekekenta Clinton'
 # readTimeInMinutes: '6 min'
-authorBio: 'Co-Founder and CEO, Easeplan'
+authorBio: 'Co-Founder, Easeplan'
 profilePicture: https://avatars.githubusercontent.com/u/60361247?v=4
 ---
 

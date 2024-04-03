@@ -5,7 +5,7 @@ pubDate: Apr 01 2024
 heroImage: '/images/top-tips-for-finding-the-best-make-up-artists-for-your-wedding-day.png'
 author: 'Ekekenta Clinton'
 # readTimeInMinutes: '6 min'
-authorBio: 'Co-Founder and CEO, Easeplan'
+authorBio: 'Co-Founder, Easeplan'
 profilePicture: https://avatars.githubusercontent.com/u/60361247?v=4
 ---
 

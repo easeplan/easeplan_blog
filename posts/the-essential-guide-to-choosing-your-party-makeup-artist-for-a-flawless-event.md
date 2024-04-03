@@ -5,7 +5,7 @@ pubDate: Mar 20 2024
 heroImage: '/images/the-essential-guide-to-choosing-your-party-makeup-artist-for-a-flawless-event.png'
 author: 'Ekekenta Clinton'
 # readTimeInMinutes: '6 min'
-authorBio: 'Co-Founder and CEO, Easeplan'
+authorBio: 'Co-Founder, Easeplan'
 profilePicture: https://avatars.githubusercontent.com/u/60361247?v=4
 ---
 ## The Importance of Choosing the Right Party Makeup Artist
